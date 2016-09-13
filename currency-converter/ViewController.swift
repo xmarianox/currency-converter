@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var currencyInput: UITextField!
     @IBOutlet weak var buttonCalculate: UIButton!
-    
+    @IBOutlet weak var buttonConstraintBottom: NSLayoutConstraint!
+
     
     // MARK: Lifecycle
     override func viewDidAppear(animated: Bool) {
@@ -30,6 +31,9 @@ class ViewController: UIViewController {
         
         // Add textField EventListener
         currencyInput.addTarget(self, action: #selector(ViewController.inputDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
+        
+        // Add Keyboard EventListener
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,6 +47,7 @@ class ViewController: UIViewController {
         currencyInput.becomeFirstResponder()
         // Ocultamos el button
         buttonCalculate.layer.cornerRadius = 10
+        buttonCalculate.clipsToBounds = true
         buttonCalculate.alpha = 0
     }
     
@@ -59,7 +64,7 @@ class ViewController: UIViewController {
     func switchButtonState(enabled: Bool) {
         switch enabled {
         case true:
-            UIView.animateWithDuration(0.5, animations: {
+            UIView.animateWithDuration(0.8, animations: {
                 self.buttonCalculate.alpha = 1
                 self.view.layoutIfNeeded()
             }, completion: nil)
@@ -71,6 +76,16 @@ class ViewController: UIViewController {
         }
     }
     
+    // keyboardWillShow
+    func keyboardWillShow(notification: NSNotification) {
+        let userInfo: NSDictionary = notification.userInfo!
+        let keyboardFrame: NSValue = userInfo.valueForKey(UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let keyboardRectangle = keyboardFrame.CGRectValue()
+        let keyboardHeight = keyboardRectangle.height
+        
+        // update bottom constraint
+        buttonConstraintBottom.constant = keyboardHeight + 30
+    }
     
     // MARK: Events
     @IBAction func buttonCalculate(sender: AnyObject) {
