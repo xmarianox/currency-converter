@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,24 +19,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBT-cl-bZq">
-                                <rect key="frame" x="279" y="28" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tyL-k0-Wgw">
-                                <rect key="frame" x="252" y="87" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j9j-F4-ogw">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="411"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingrese la suma a calcular" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBT-cl-bZq">
+                                        <rect key="frame" x="20" y="32" width="560" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$ 1.00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tyL-k0-Wgw">
+                                        <rect key="frame" x="20" y="66.5" width="560" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="YiE-Fm-zma"/>
+                                        </constraints>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1960784314" green="0.85882352939999995" blue="0.43137254899999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="tyL-k0-Wgw" firstAttribute="leading" secondItem="j9j-F4-ogw" secondAttribute="leading" constant="20" id="ErQ-EZ-tzC"/>
+                                    <constraint firstItem="tyL-k0-Wgw" firstAttribute="top" secondItem="HBT-cl-bZq" secondAttribute="bottom" constant="8" id="HnN-xk-vaZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="tyL-k0-Wgw" secondAttribute="trailing" constant="20" id="UaW-dA-DNj"/>
+                                    <constraint firstItem="HBT-cl-bZq" firstAttribute="leading" secondItem="j9j-F4-ogw" secondAttribute="leading" constant="20" id="do7-Qi-fYC"/>
+                                    <constraint firstItem="HBT-cl-bZq" firstAttribute="top" secondItem="j9j-F4-ogw" secondAttribute="top" constant="32" id="t6f-Ta-NbI"/>
+                                    <constraint firstAttribute="trailing" secondItem="HBT-cl-bZq" secondAttribute="trailing" constant="20" id="wRG-8K-7Ny"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="j9j-F4-ogw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="5to-Ow-7ZE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="j9j-F4-ogw" secondAttribute="trailing" constant="-20" id="ae6-RN-bjh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="j9j-F4-ogw" secondAttribute="bottom" constant="189" id="i5E-tg-DRW"/>
+                            <constraint firstItem="j9j-F4-ogw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1:1" id="oXf-r6-0DX"/>
+                            <constraint firstItem="j9j-F4-ogw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="ovW-ef-B0x"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="oXf-r6-0DX"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="currencyInput" destination="tyL-k0-Wgw" id="sSw-7Y-KuB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="523" y="387"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kcD-Qk-55q">
+            <objects>
+                <viewController id="FsZ-VX-iEl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mLo-aN-fTZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="6e3-fo-c8c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mx4-Gc-lwf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JgJ-oJ-1vd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1188" y="387"/>
         </scene>
     </scenes>
 </document>
