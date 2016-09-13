@@ -9,3 +9,10 @@
 import Foundation
 
 // TODO: NetworkService
+struct CurrencyServices {
+    
+    func fetch() {
+        // TODO
+    }
+    
+}
