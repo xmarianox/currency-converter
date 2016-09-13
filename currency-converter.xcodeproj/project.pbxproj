@@ -98,10 +98,9 @@
 			isa = PBXGroup;
 			children = (
 				7C4C38AC1D877E6B00ACE7ED /* AppDelegate.swift */,
-				7C4C38AE1D877E6B00ACE7ED /* ViewController.swift */,
-				7C4C38B01D877E6B00ACE7ED /* Main.storyboard */,
+				7C4C38DA1D87843100ACE7ED /* viewControllers */,
+				7C4C38DB1D87844900ACE7ED /* storyboards */,
 				7C4C38B31D877E6B00ACE7ED /* Assets.xcassets */,
-				7C4C38B51D877E6B00ACE7ED /* LaunchScreen.storyboard */,
 				7C4C38B81D877E6B00ACE7ED /* Info.plist */,
 			);
 			path = "currency-converter";
@@ -123,6 +122,23 @@
 				7C4C38CE1D877E6B00ACE7ED /* Info.plist */,
 			);
 			path = "currency-converterUITests";
+			sourceTree = "<group>";
+		};
+		7C4C38DA1D87843100ACE7ED /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7C4C38AE1D877E6B00ACE7ED /* ViewController.swift */,
+			);
+			name = viewControllers;
+			sourceTree = "<group>";
+		};
+		7C4C38DB1D87844900ACE7ED /* storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				7C4C38B01D877E6B00ACE7ED /* Main.storyboard */,
+				7C4C38B51D877E6B00ACE7ED /* LaunchScreen.storyboard */,
+			);
+			name = storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,6 +422,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "marianomolina.xyz.currency-converter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -417,6 +434,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "marianomolina.xyz.currency-converter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
