@@ -1,5 +1,23 @@
 # Currency Converter
 
+Para correr el proyecto es necesario instalar [CocoaPods](https://cocoapods.org/) con el siguiente comando
+
+```bash
+$ sudo gem install cocoapods
+```
+
+Luego hay que instalar las dependencias del proyecto, [Alamofire](https://github.com/Alamofire/Alamofire) y [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+
+```bash
+$ pod install
+```
+
+Una vez instaladas las dependencias podemos abrir el proyecto
+
+```bash
+$ open currency-converter.xcworkspace
+```
+
 ## Problem
 You plan on traveling around the world using a stack of `$1 USD` dollar bills. 
 Write an app that will calculate the exchange rate for any number of dollar bills, 
