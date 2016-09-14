@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var currencyInput: UITextField!
     @IBOutlet weak var buttonCalculate: UIButton!
     @IBOutlet weak var buttonConstraintBottom: NSLayoutConstraint!
-
+    
+    var rates = [Rate]()
     
     // MARK: Lifecycle
     override func viewDidAppear(animated: Bool) {
@@ -28,6 +29,8 @@ class ViewController: UIViewController {
         
         // configuramos la vista inicial
         setUpViews()
+        
+        
         
         // Add textField EventListener
         currencyInput.addTarget(self, action: #selector(ViewController.inputDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
@@ -89,7 +92,24 @@ class ViewController: UIViewController {
     
     // MARK: Events
     @IBAction func buttonCalculate(sender: AnyObject) {
-        print("TAP TAP TAP!!")
+        //print("TAP TAP TAP!!")
+        
+        getLastRate()
+        
+        print("Items: \(rates)")
+    }
+    
+    
+    func getLastRate() {
+        // Get data from API.
+        let endPoint = EndPoint()
+        
+        let services = CurrencyServices()
+        services.fetch(endPoint) { (Rate) in
+            if let rate = Rate {
+                self.rates = rate
+            }
+        }
     }
 
 }
