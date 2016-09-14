@@ -15,13 +15,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonCalculate: UIButton!
     @IBOutlet weak var buttonConstraintBottom: NSLayoutConstraint!
     
-    var rates = [Rate]()
+    
     
     // MARK: Lifecycle
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBarHidden = true
     }
     
     override func viewDidLoad() {
@@ -29,8 +35,6 @@ class ViewController: UIViewController {
         
         // configuramos la vista inicial
         setUpViews()
-        
-        
         
         // Add textField EventListener
         currencyInput.addTarget(self, action: #selector(ViewController.inputDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
@@ -90,27 +94,27 @@ class ViewController: UIViewController {
         buttonConstraintBottom.constant = keyboardHeight + 30
     }
     
-    // MARK: Events
-    @IBAction func buttonCalculate(sender: AnyObject) {
-        //print("TAP TAP TAP!!")
-        
-        getLastRate()
-        
-        print("Items: \(rates)")
-    }
-    
-    
-    func getLastRate() {
-        // Get data from API.
-        let endPoint = EndPoint()
-        
-        let services = CurrencyServices()
-        services.fetch(endPoint) { (Rate) in
-            if let rate = Rate {
-                self.rates = rate
+    // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let svc = segue.destinationViewController as? ChartViewController {
+            
+            if currencyInput.text != "" {
+                svc.amountSegue = currencyInput.text
             }
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = "Volver"
+            navigationItem.backBarButtonItem = backItem
         }
     }
+    
+    
+    // MARK: Events
+    @IBAction func buttonCalculate(sender: AnyObject) {
+        self.performSegueWithIdentifier("chartSegue", sender: nil)
+    }
+    
+
 
 }
 
